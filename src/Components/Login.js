@@ -10,9 +10,10 @@ import {
 
 import { useDispatch } from "react-redux";
 import { addUser } from "../utilis/userSlice";
-import { useNavigate } from "react-router-dom";
+import { USER_AVTAR } from "../utilis/constants";
+
 const Login = () => {
-  const navigate = useNavigate();
+
 
   const [isSignInform, setisSignInform] = useState(true);
   const [errorMessage, seterrorMessage] = useState(false);
@@ -45,7 +46,7 @@ const Login = () => {
             const user = userCredential.user;
              updateProfile(user, {
                displayName: name.current.value,
-               photoURL: "https://avatars.githubusercontent.com/u/12824231?v=4",
+               photoURL: USER_AVTAR,
              })
                .then(() => {
                   const { uid, email, displayName, photoURL } =
@@ -58,7 +59,7 @@ const Login = () => {
                       photoURL: photoURL,
                     })
                   );
-                 navigate("/browse");
+             
                })
                .catch((error) => {
                  seterrorMessage(error.message);
@@ -86,8 +87,8 @@ const Login = () => {
             // Signed in
             const user = userCredential.user;
             
-             navigate("/browse");
-            console.log(user);
+           
+         
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -115,7 +116,6 @@ const Login = () => {
         <h1 className="font-bold py-3 px-2 text-2xl">
           {isSignInform ? "Sign-In" : "Sign-Up"}
         </h1>
-
         {!isSignInform && (
           <input
             ref={name}
@@ -124,7 +124,6 @@ const Login = () => {
             placeholder="Full Name "
           />
         )}
-
         <input
           ref={email}
           className=" m-2 py-3 px-2 w-full rounded-lg bg-gray-700"
@@ -144,14 +143,22 @@ const Login = () => {
         >
           Submit
         </button>
-
         <p className="m-2 py-3 px-2 cursor-pointer" onClick={toggleSignInform}>
           {isSignInform
             ? " New to Netflix ? Sign-Up now"
             : "Already have an account ?? Sign-In"}
         </p>
+        <div className="text-center mt-8 mb-8 text-gray-500 text-sm font-medium">
+          <p>
+            Disclaimer: This is a student project created solely for educational
+            purposes. It is not affiliated with Netflix.
+          </p>
+        </div>
+        
       </form>
     </div>
   );
 };
+
+
 export default Login;
