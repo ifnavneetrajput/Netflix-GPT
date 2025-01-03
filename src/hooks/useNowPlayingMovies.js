@@ -6,15 +6,21 @@ import { addNowPlayingMovies } from "../utilis/movieSlice";
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
 
-    const getNowPlayingMovies = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?&page=1",
-      API_OPTIONS
-    );
-    const json = await data.json();
-    dispatch(addNowPlayingMovies(json.results));
-  
-  };
+   const getNowPlayingMovies = async () => {
+     try {
+       const response = await fetch(
+         "https://api.themoviedb.org/3/movie/now_playing?&page=1",
+         API_OPTIONS
+       );
+      
+       const json = await response.json();
+      
+       dispatch(addNowPlayingMovies(json.results));
+     } catch (error) {
+       console.error("API Request Error:", error);
+     }
+   };
+
   
   
   
