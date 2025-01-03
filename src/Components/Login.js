@@ -101,17 +101,18 @@ const Login = () => {
 
   };
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage:
+          'url("https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg")',
+      }}
+      className="min-h-screen w-screen flex justify-center items-center "
+    >
       <Header />
-      <div className="absolute">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          alt="logo"
-        />
-      </div>
+
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
+        className="w-3/12  p-12 bg-black   text-white rounded-lg bg-opacity-80"
       >
         <h1 className="font-bold py-3 px-2 text-2xl">
           {isSignInform ? "Sign-In" : "Sign-Up"}
@@ -148,13 +149,11 @@ const Login = () => {
             ? " New to Netflix ? Sign-Up now"
             : "Already have an account ?? Sign-In"}
         </p>
-        <div className="text-center mt-8 mb-8 text-gray-500 text-sm font-medium">
-          <p>
-            Disclaimer: This is a student project created solely for educational
-            purposes. It is not affiliated with Netflix.
-          </p>
-        </div>
-        
+
+        <p className="text-center my-4 text-gray-500 text-sm font-medium">
+          Disclaimer: This is a student project created solely for educational
+          purposes. It is not affiliated with Netflix.
+        </p>
       </form>
     </div>
   );
